@@ -20,15 +20,18 @@
         <strong>Moderation<br></strong>
         {# Moderatoren auflisten #}
         {% for contributor in episode.contributors({role: "moderator", orderby: "position", order: "ASC"}) %}
-            {% include '@contributors/avatar.twig' with {'avatar': contributor.avatar, 'size': 32} only %}
+            {% include '@contributors/avatar.twig' with {'avatar': contributor.avatar, 'size': 64} only %}
             {{ contributor.name }}
-            {# {% if not loop.last %}, {% endif %} #}
+            {# {% if not loop.last %} {% endif %} #}
+            <div><br></div>
+            <div><br></div>
         {% endfor %}
         {# Co-Moderatoren auflisten #}
         {% for contributor in episode.contributors({role: "comoderator", orderby: "position", order: "ASC"}) %}
-            {% include '@contributors/avatar.twig' with {'avatar': contributor.avatar, 'size': 32} only %}
+            {% include '@contributors/avatar.twig' with {'avatar': contributor.avatar, 'size': 64} only %}
             {{ contributor.name }}
             {# {% if not loop.last %}, {% endif %} #}
+            <div><br></div>
         {% endfor %}
     </div>
 {% endif %}
@@ -40,7 +43,7 @@
         <strong>Gäste<br></strong>
         {# Gäste auflisten. Müssen Contributor in einer Episode sein! #}
         {% for contributor in episode.contributors({group: "onair", role: "gast", orderby: "position", order: "ASC"}) %}
-            {% include '@contributors/avatar.twig' with {'avatar': contributor.avatar, 'size': 32} only %}
+            {% include '@contributors/avatar.twig' with {'avatar': contributor.avatar, 'size': 64} only %}
             {{ contributor.name }}
             {% if not loop.last %}, {% endif %}
         {% endfor %}
@@ -54,7 +57,7 @@
         <strong>Shownotes<br></strong>
         {# Shownoter auflisten. Müssen Contributor in einer Episode sein! #}
         {% for contributor in episode.contributors({group: "backstage", role: "shownoter", orderby: "position", order: "ASC"}) %}
-            {% include '@contributors/avatar.twig' with {'avatar': contributor.avatar, 'size': 32} only %}
+            {% include '@contributors/avatar.twig' with {'avatar': contributor.avatar, 'size': 64} only %}
             {{ contributor.name }}
             {% if not loop.last %}, {% endif %}
         {% endfor %}
@@ -68,13 +71,14 @@
         <strong>Beitragende<br></strong>
         {# Beitragende auflisten. Müssen Contributor in einer Episode sein! #}
         {% for contributor in episode.contributors({group: "backstage", role: "beitragender", orderby: "position", order: "ASC"}) %}
-            {% include '@contributors/avatar.twig' with {'avatar': contributor.avatar, 'size': 32} only %}
+            {% include '@contributors/avatar.twig' with {'avatar': contributor.avatar, 'size': 64} only %}
             {{ contributor.name }}
             {% if not loop.last %}, {% endif %}
         {% endfor %}
     </div>
 {% endif %}
 
+<div><br></div>
 <div><br></div>
 
 <div>
