@@ -1,0 +1,17 @@
+{#  1. buttonBackgroundColor        #}
+{#  2. buttonHoverBackgroundColor   #}
+{#  3. buttonActiveBackgroundColor  #}
+{#  4. buttonTextColor              #}
+{#  5. buttonHoverTextColor         #}
+{#  6. buttonActiveTextColor        #}
+{#  7. buttonBorderColor            #}
+{#  8. listHighlightBackgroundColor #}
+{#  9. listHighlightTextColor       #}
+
+{% set option = {
+size: 'big',
+colors: '#F89B80;#555555;#555555;#ffffff;#ffffff;#ffffff;#ffffff;;'
+}|merge(option)
+%}
+
+{{ podcast.subscribeButton({ colors: option.colors, size: option.size }) }}
