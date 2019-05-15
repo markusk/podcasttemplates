@@ -3,6 +3,7 @@
         <th>Ausgabe</th>
         <th>Datum</th>
         <th>Titel</th>
+        <th>Gäste</th>
         <th>Dauer</th>
     </thead>
     <tbody>
@@ -33,7 +34,6 @@
                   {# Nur wenn Gäste bei dieser Episode dabei, diese auflisten #}
                   {% if episode.contributors({role: "gast"}) %}
                       <div>
-                          <strong>Gäste<br></strong>
                           {# Gäste auflisten. Müssen Contributor in einer Episode sein! #}
                           {% for contributor in episode.contributors({group: "onair", role: "gast", orderby: "position", order: "ASC"}) %}
                               {% include '@contributors/avatar.twig' with {'avatar': contributor.avatar, 'size': 32} only %}
