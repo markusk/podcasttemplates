@@ -58,16 +58,21 @@ th, td {
 
 {# Nur wenn Gäste bei dieser Episode dabei, diese auflisten #}
 {% if episode.contributors({role: "gast"}) %}
-    <div><br></div>
-    <div>
+    <table>
         <strong>Gäste<br></strong>
-        {# Gäste auflisten. Müssen Contributor in einer Episode sein! #}
-        {% for contributor in episode.contributors({group: "onair", role: "gast", orderby: "position", order: "ASC"}) %}
-            {% include '@contributors/avatar.twig' with {'avatar': contributor.avatar, 'size': 64} only %}
-            {{ contributor.name }}
-            {% if not loop.last %}, {% endif %}
+        {# Gäste auflisten #}
+        {% for contributor in episode.contributors({role: "gast", orderby: "position", order: "ASC"}) %}
+        <tr>
+            <td>
+                {% include '@contributors/avatar.twig' with {'avatar': contributor.avatar, 'size': 64} only %}
+            </td>
+            <td>
+                {{ contributor.name }}
+            </td>
+        </tr>
+            {# {% if not loop.last %} {% endif %} #}
         {% endfor %}
-    </div>
+    </table>
 {% endif %}
 
 {# Nur wenn Shownoter bei dieser Episode dabei, diese auflisten #}
