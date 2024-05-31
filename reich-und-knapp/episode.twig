@@ -13,8 +13,6 @@
 {% endif %}
 
 <div><br></div>
-[podlove-episode-downloads]
-<div><br></div>
 
 {# On-Air, Moderatoren #}
 {% if episode.contributors({role: "moderator" or "comoderator"}) %}
@@ -22,13 +20,13 @@
         <strong>Moderation<br></strong>
         {# Moderationen auflisten (Gruppe, nicht Rolle) #}
         {% for contributor in episode.contributors({role: "moderator", orderby: "position", order: "ASC"}) %}
-            {% include '@contributors/avatar.twig' with {'avatar': contributor.avatar, 'size': 32} only %}
+            {% include '@contributors/avatar.twig' with {'avatar': contributor.avatar, 'size': 64} only %}
             {{ contributor.name }}
             {# {% if not loop.last %}, {% endif %} #}
         {% endfor %}
         {# Moderationen auflisten (Gruppe, nicht Rolle) #}
         {% for contributor in episode.contributors({role: "comoderator", orderby: "position", order: "ASC"}) %}
-            {% include '@contributors/avatar.twig' with {'avatar': contributor.avatar, 'size': 32} only %}
+            {% include '@contributors/avatar.twig' with {'avatar': contributor.avatar, 'size': 64} only %}
             {{ contributor.name }}
             {# {% if not loop.last %}, {% endif %} #}
         {% endfor %}
@@ -42,9 +40,9 @@
         <strong>Gäste<br></strong>
         {# Gäste auflisten. Müssen Contributor in einer Episode sein! #}
         {% for contributor in episode.contributors({group: "onair", role: "gast", orderby: "position", order: "ASC"}) %}
-            {% include '@contributors/avatar.twig' with {'avatar': contributor.avatar, 'size': 32} only %}
+            {% include '@contributors/avatar.twig' with {'avatar': contributor.avatar, 'size': 64} only %}
             {{ contributor.name }}
-            {% if not loop.last %}, {% endif %}
+            {# {% if not loop.last %}, {% endif %} #}  
         {% endfor %}
     </div>
 {% endif %}
@@ -58,7 +56,7 @@
         {% for contributor in episode.contributors({group: "backstage", role: "shownoter", orderby: "position", order: "ASC"}) %}
             {% include '@contributors/avatar.twig' with {'avatar': contributor.avatar, 'size': 32} only %}
             {{ contributor.name }}
-            {% if not loop.last %}, {% endif %}
+            {% if not loop.last %}, {% endif %}  
         {% endfor %}
     </div>
 {% endif %}
@@ -72,7 +70,7 @@
         {% for contributor in episode.contributors({group: "backstage", role: "beitragender", orderby: "position", order: "ASC"}) %}
             {% include '@contributors/avatar.twig' with {'avatar': contributor.avatar, 'size': 32} only %}
             {{ contributor.name }}
-            {% if not loop.last %}, {% endif %}
+            {% if not loop.last %}, {% endif %}  
         {% endfor %}
     </div>
 {% endif %}
@@ -122,7 +120,7 @@
 	{% include '@core/license.twig' %}
 
 	You can pass in a license to determine which one is displayed:
-	{% include '@core/license.twig' with {'license': podcast.license} %}
+	{% include '@core/license.twig' with {'license': podcast.license} %}	
 #}
 {% if license is not defined %}
 	{% if episode is not null and episode.license.valid %}
